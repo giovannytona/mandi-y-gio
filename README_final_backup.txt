@@ -1,0 +1,1 @@
+La galería anterior está respaldada en la rama backup-before-final-gallery.
