@@ -594,8 +594,25 @@ function entrar(){
     window.scrollTo({
       top:0,
       behavior:"smooth"
+    
+    });
 
-      const inicio = new Date("2026-01-27T00:00:00");
+  }else{
+
+    error.textContent =
+      "Esa no es nuestra contraseña 🦋❤️👻";
+
+  }
+}
+
+document
+  .getElementById("password")
+  .addEventListener("keydown", function(e){
+
+    if(e.key === "Enter"){
+      entrar();
+    }
+    const inicio = new Date("2026-01-27T00:00:00");
 
 function actualizarContador() {
   const ahora = new Date();
@@ -620,24 +637,6 @@ function actualizarContador() {
 
 actualizarContador();
 setInterval(actualizarContador, 1000);
-    
-    });
-
-  }else{
-
-    error.textContent =
-      "Esa no es nuestra contraseña 🦋❤️👻";
-
-  }
-}
-
-document
-  .getElementById("password")
-  .addEventListener("keydown", function(e){
-
-    if(e.key === "Enter"){
-      entrar();
-    }
 
   });
 
