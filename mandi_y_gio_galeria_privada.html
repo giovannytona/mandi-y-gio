@@ -5,8 +5,65 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Parece que va a llover – Mandi y Gio</title>
+  /* 🦋 Mariposas mágicas */
+.mariposa-volando {
+  position: fixed;
+  left: -60px;
+  top: 20vh;
+  z-index: 9999;
+  pointer-events: none;
+  font-size: 28px;
+  filter: drop-shadow(0 0 8px rgba(255,180,230,.9));
+  animation: vueloMariposa 14s linear forwards;
+}
 
+.mariposa-volando::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  width: 55px;
+  height: 3px;
+  border-radius: 50%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,190,240,.8),
+    transparent
+  );
+  filter: blur(2px);
+}
+
+@keyframes vueloMariposa {
+  0% {
+    transform: translate(0, 0) rotate(-8deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  30% {
+    transform: translate(30vw, -35px) rotate(8deg);
+  }
+
+  55% {
+    transform: translate(55vw, 45px) rotate(-5deg);
+  }
+
+  80% {
+    transform: translate(80vw, -30px) rotate(7deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(110vw, 20px) rotate(-5deg);
+    opacity: 0;
+  }
+}
 <style>
+  
   .contador-amor {
   margin: 30px 0;
   padding: 28px;
@@ -669,6 +726,24 @@ function contadorAmor() {
 contadorAmor();
 setInterval(contadorAmor, 1000);
 </script>
-  
+  <script>
+function crearMariposa() {
+  const mariposa = document.createElement("div");
+
+  mariposa.className = "mariposa-volando";
+  mariposa.textContent = "🦋";
+
+  mariposa.style.top = (15 + Math.random() * 65) + "vh";
+  mariposa.style.animationDuration = (12 + Math.random() * 7) + "s";
+
+  document.body.appendChild(mariposa);
+
+  setTimeout(() => {
+    mariposa.remove();
+  }, 20000);
+}
+
+setInterval(crearMariposa, 9000);
+</script>
 </body>
 </html>
