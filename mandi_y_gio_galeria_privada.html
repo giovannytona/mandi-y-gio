@@ -184,6 +184,48 @@ footer{
   }
 }
 </style>
+  .contador-amor {
+  margin: 30px 0;
+  padding: 28px;
+  text-align: center;
+  border: 1px solid rgba(255, 120, 180, .45);
+  border-radius: 28px;
+  background: rgba(20, 15, 28, .55);
+  box-shadow: 0 0 35px rgba(255, 80, 160, .15);
+}
+
+.contador-amor h2 {
+  margin: 0 0 22px;
+  color: #ffd1e5;
+}
+
+#contador {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 1.2rem;
+}
+
+#contador span {
+  color: #ffd1e5;
+}
+
+#contador b {
+  display: block;
+  font-size: 2.2rem;
+}
+
+#contador small {
+  font-size: .9rem;
+}
+
+.corazon-contador {
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #ff8fbd;
+}
 </head>
 
 <body>
@@ -572,6 +614,26 @@ document
   });
 
 </script>
+const inicioHistoria = new Date("2026-01-27T00:00:00+01:00");
 
+function actualizarContador() {
+  const ahora = new Date();
+  const diferencia = Math.max(0, ahora - inicioHistoria);
+
+  const totalSegundos = Math.floor(diferencia / 1000);
+
+  const dias = Math.floor(totalSegundos / 86400);
+  const horas = Math.floor((totalSegundos % 86400) / 3600);
+  const minutos = Math.floor((totalSegundos % 3600) / 60);
+  const segundos = totalSegundos % 60;
+
+  document.getElementById("dias").textContent = dias;
+  document.getElementById("horas").textContent = String(horas).padStart(2, "0");
+  document.getElementById("minutos").textContent = String(minutos).padStart(2, "0");
+  document.getElementById("segundos").textContent = String(segundos).padStart(2, "0");
+}
+
+actualizarContador();
+setInterval(actualizarContador, 1000);
 </body>
 </html>
