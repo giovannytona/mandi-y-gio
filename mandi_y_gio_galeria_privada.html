@@ -641,9 +641,34 @@ actualizarContador();
 setInterval(actualizarContador, 1000);
     
  
-
 </script>
+<script>
+const fechaInicioAmor = new Date("2026-01-27T00:00:00");
 
+function contadorAmor() {
+  const ahora = new Date();
+  let diferencia = ahora - fechaInicioAmor;
+
+  const dias = Math.floor(diferencia / 86400000);
+  diferencia %= 86400000;
+
+  const horas = Math.floor(diferencia / 3600000);
+  diferencia %= 3600000;
+
+  const minutos = Math.floor(diferencia / 60000);
+  diferencia %= 60000;
+
+  const segundos = Math.floor(diferencia / 1000);
+
+  document.getElementById("dias").textContent = dias;
+  document.getElementById("horas").textContent = horas;
+  document.getElementById("minutos").textContent = minutos;
+  document.getElementById("segundos").textContent = segundos;
+}
+
+contadorAmor();
+setInterval(contadorAmor, 1000);
+</script>
   
 </body>
 </html>
