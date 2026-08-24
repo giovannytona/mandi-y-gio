@@ -670,24 +670,6 @@ function contadorAmor() {
 contadorAmor();
 setInterval(contadorAmor, 1000);
 </script>
-  <script>
-function crearMariposa() {
-  const mariposa = document.createElement("div");
 
-  mariposa.className = "mariposa-volando";
-  mariposa.textContent = "🦋";
-
-  mariposa.style.top = (15 + Math.random() * 65) + "vh";
-  mariposa.style.animationDuration = (12 + Math.random() * 7) + "s";
-
-  document.body.appendChild(mariposa);
-
-  setTimeout(() => {
-    mariposa.remove();
-  }, 20000);
-}
-
-setInterval(crearMariposa, 9000);
-</script>
 </body>
 </html>
