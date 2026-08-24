@@ -615,24 +615,31 @@ document
   });
 
 </script>
-const inicioHistoria = new Date("2026-01-27T00:00:00+01:00");
+const inicio = new Date("2026-01-27T00:00:00");
 
 function actualizarContador() {
   const ahora = new Date();
-  const diferencia = Math.max(0, ahora - inicioHistoria);
+  let diferencia = ahora - inicio;
 
-  const totalSegundos = Math.floor(diferencia / 1000);
+  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+  diferencia %= (1000 * 60 * 60 * 24);
 
-  const dias = Math.floor(totalSegundos / 86400);
-  const horas = Math.floor((totalSegundos % 86400) / 3600);
-  const minutos = Math.floor((totalSegundos % 3600) / 60);
-  const segundos = totalSegundos % 60;
+  const horas = Math.floor(diferencia / (1000 * 60 * 60));
+  diferencia %= (1000 * 60 * 60);
+
+  const minutos = Math.floor(diferencia / (1000 * 60));
+  diferencia %= (1000 * 60);
+
+  const segundos = Math.floor(diferencia / 1000);
 
   document.getElementById("dias").textContent = dias;
-  document.getElementById("horas").textContent = String(horas).padStart(2, "0");
-  document.getElementById("minutos").textContent = String(minutos).padStart(2, "0");
-  document.getElementById("segundos").textContent = String(segundos).padStart(2, "0");
+  document.getElementById("horas").textContent = horas;
+  document.getElementById("minutos").textContent = minutos;
+  document.getElementById("segundos").textContent = segundos;
 }
+
+actualizarContador();
+setInterval(actualizarContador, 1000);
 
 actualizarContador();
 setInterval(actualizarContador, 1000);
